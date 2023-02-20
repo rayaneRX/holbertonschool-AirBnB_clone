@@ -13,7 +13,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         model = BaseModel()
-        self.assertEqual(type(model.to_dict()), dict)
+        model_dict = model.to_dict()
+        self.assertEqual(len(model_dict), 4)
 
     def test_id(self):
         model_1 = BaseModel()
