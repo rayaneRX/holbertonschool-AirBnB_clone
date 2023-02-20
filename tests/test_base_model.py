@@ -6,8 +6,10 @@ from models.base_model import BaseModel
 class TestBaseModel(unittest.TestCase):
     def test_save(self):
         model = BaseModel()
-        model_saved = model.save()
-        self.assertNotEqual(model.updated_at, model_saved)
+        x = model.updated_at
+        model.save()
+        y = model.updated_at
+        self.assertNotEqual(x, y)
 
     def test_to_dict(self):
         model = BaseModel()
