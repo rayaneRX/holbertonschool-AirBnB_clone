@@ -10,6 +10,11 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        """Do nothing on empty line"""
+        pass
+
+
     def do_quit(self, arg):
         """exit thr program"""
         return True
@@ -27,9 +32,7 @@ class HBNBCommand(cmd.Cmd):
         """help to EOF"""
         print("EFO command to exit the program")
 
-    def emply_line(self, arg):
-        """execute anything"""
-        pass
+    
 
 
 if __name__ == '__main__':
