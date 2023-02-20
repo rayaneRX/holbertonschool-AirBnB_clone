@@ -7,9 +7,9 @@ from datetime import datetime
 
 class BaseModel:
     """Class defining all common attributes/methods for other classes"""
-    def __init__(self, id=str(uuid.uuid4()), created_at=datetime.now(),
+    def __init__(self, id=None, created_at=datetime.now(),
                  updated_at=datetime.now()):
-        self.id = id
+        self.id = str(uuid.uuid4())
         self.created_at = created_at
         self.updated_at = updated_at
 
