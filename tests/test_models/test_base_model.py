@@ -1,6 +1,10 @@
 import unittest
 
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+
+
+objects = FileStorage._FileStorage__objects
 
 
 class TestBaseModel(unittest.TestCase):
@@ -32,3 +36,9 @@ class TestBaseModel(unittest.TestCase):
         model = BaseModel()
         self.assertEqual(model.__str__(), f"[BaseModel] ({model.id}) {model.__dict__}")
         """ self.assertEqual(type(model.__str__()), str) """
+
+    def test_save(self):
+    obj = objects.copy()
+    model = BaseModel()
+    model.save()
+    self.assertNotEqual(obj, objects)
