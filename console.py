@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """exit thr program"""
-        print("bay bay")
+        print("bay bay -From Rayane")
         return True
 
     def do_EOF(self, arg):
