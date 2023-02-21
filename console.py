@@ -42,8 +42,6 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in ["BaseModel", "User", "State", "City",
                          "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
-            
-                
         else:
             instance = eval(arg)()
             instance.save()
@@ -66,7 +64,8 @@ class HBNBCommand(cmd.Cmd):
  #           print(repr(obj))
         if not arg:
             print("** class name missing **")
-        elif arg != "BaseModel" and issubclass(eval(arg), BaseModel) is False:
+        elif arg not in ["BaseModel", "User", "State", "City",
+                         "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
 
         args = arg.split()
@@ -96,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
         args = arg.split()
-        if args[0] != "BaseModel" and issubclass(eval(arg), BaseModel) is False:
+        if arg[0] not in ["BaseModel", "User", "State", "City",
+                          "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
 
         if len(args) == 1:
