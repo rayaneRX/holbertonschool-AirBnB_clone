@@ -18,18 +18,26 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
+        if type(self.created_at) is str:
+            self.created_at = datetime.fromisoformat(self.created_at)
+        if type(self.updated_at) is str:
+            self.updated_at = datetime.fromisoformat(self.updated_at)
 
     def __str__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        models.storage.save()
         self.updated_at = datetime.now()
-        self.created_at = datetime.fromisoformat(self.created_at)
+        models.storage.save()
 
     def to_dict(self):
-        dict = self.__dict__
-        dict["__class__"] = f"{self.__class__.__name__}"
-        dict["updated_at"] = self.updated_at.isoformat()
-        dict["created_at"] = self.created_at.isoformat()
-        return dict
+        new_dict = {}
+        new_dict["__class__"] = f"{self.__class__.__name__}"
+        for key, value in self.__dict__.items():
+            if key == "updated_at":
+                new_dict[key] = self.updated_at.isoformat()
+            elif key == "created_at":
+                new_dict[key] = self.created_at.isoformat()
+            else:
+                new_dict[key] = value
+        return new_dict
