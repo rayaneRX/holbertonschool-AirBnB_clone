@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_help_EOF(self, arg):
         """help to EOF"""
-        print("EFO command to exit the program")
+        print("EOF command to exit the program")
 
     
 
