@@ -2,7 +2,7 @@ import unittest
 
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-
+import os.path
 
 objects = FileStorage._FileStorage__objects
 
@@ -14,6 +14,7 @@ class TestBaseModel(unittest.TestCase):
         model.save()
         y = model.updated_at
         self.assertNotEqual(x, y)
+        os.remove("file.json")
 
     def test_to_dict(self):
         model = BaseModel()
@@ -38,7 +39,10 @@ class TestBaseModel(unittest.TestCase):
         """ self.assertEqual(type(model.__str__()), str) """
 
     def test_save_with_reload(self):
+        self.assertEqual(os.path.isfile("file.json"), False)
         obj = objects.copy()
         model = BaseModel()
         model.save()
         self.assertNotEqual(obj, objects)
+        self.assertEqual(os.path.isfile("file.json"), True)
+        os.remove("file.json")
