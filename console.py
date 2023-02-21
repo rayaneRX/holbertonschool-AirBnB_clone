@@ -3,6 +3,11 @@
 the entry point of the command interpreter"""
 import cmd
 
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+import models
+
+
 
 class HBNBCommand(cmd.Cmd):
     """program called console.py that contains
@@ -25,6 +30,19 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
+
+    def do_create(self, arg):
+        """create a new instance of BaseModel"""
+        if not arg:
+            print("** class name missing **")
+        elif arg != "BaseModel":
+            print("** class doesn't exist **")
+        else:
+            instance = BaseModel()
+            instance.save()
+            print(instance.id)
+
+
     def do_help_quit(self, arg):
         """help to qiut """
         print("Quit command to exit the program")
@@ -33,7 +51,12 @@ class HBNBCommand(cmd.Cmd):
         """help to EOF"""
         print("EOF command to exit the program")
 
-    
+
+    def do_help_create(self, arg):
+        """help to create"""
+        print("""'create' command creates an instant of BaseModel if you add
+              class as argument after it""")
+
 
 
 if __name__ == '__main__':
