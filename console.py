@@ -39,11 +39,10 @@ class HBNBCommand(cmd.Cmd):
         """create a new instance of BaseModel"""
         if not arg:
             print("** class name missing **")
-        try:
-            if arg != "BaseModel" and issubclass(eval(arg), BaseModel) is False:
-                print("** class doesn't exist **")
-        except NameError:
+        elif arg not in ["BaseModel", "User", "State", "City",
+                         "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
+            
                 
         else:
             instance = eval(arg)()
