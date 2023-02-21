@@ -63,10 +63,10 @@ class HBNBCommand(cmd.Cmd):
   #          obj = HBNBCommand()
  #           print(repr(obj))
         args = arg.split()
-        if not args[0]:
+        if not arg:
             print("** class name missing **")
         elif args[0] not in ["BaseModel", "User", "State", "City",
-                         "Amenity", "Place", "Review"]:
+                             "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
 
         else:
@@ -78,11 +78,12 @@ class HBNBCommand(cmd.Cmd):
                 instance_id = args[1]
                 key = class_name + "." + instance_id
 
-                if key not in models.storage.all():
+                if key not in models.storage.all().keys():
                     print("** no instance found **")
 
-                instance = models.storage.all()[key]
-                print(instance)
+                else:
+                    instance = models.storage.all()[key]
+                    print(instance)
 
     def do_destroy(self, arg):
 #        args = arg.split()
