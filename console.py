@@ -14,7 +14,6 @@ from models.engine.file_storage import FileStorage
 import models
 
 
-
 class HBNBCommand(cmd.Cmd):
     """program called console.py that contains
     the entry point of the command interpreter"""
@@ -95,31 +94,34 @@ class HBNBCommand(cmd.Cmd):
 #            print("** instance id missing **")
         #else:
             #del
+        models.storage.reload()
+        args = arg.split()
         if not arg:
             print("** class name missing **")
-        args = arg.split()
-        if arg[0] not in ["BaseModel", "User", "State", "City",
-                          "Amenity", "Place", "Review"]:
+        elif args[0] not in ["BaseModel", "User", "State", "City",
+                           "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
 
-        if len(args) == 1:
-            print("** instance id missing **")
+        else:
+            if len(args) < 2:
+                print("** instance id missing **")
 
-        class_name = args[0]
-        instance_id = args[1]
-        key = class_name + "." + instance_id
+            else:
+                class_name = args[0]
+                instance_id = args[1]
+                key = class_name + "." + instance_id
 
-        if key not in models.storage.all():
-            print("** no instance found **")
-            return
+                if key not in models.storage.all().keys():
+                    print("** no instance found **")
 
-        all_file = models.storage.all()[key]
-        del all_file
-        models.storage.save()
+                else:
+                    all_file = models.storage.all()[key]
+                    del all_file
+                    models.storage.save()
+
     def do_all(self, arg):
         if arg not in models.classes.keys():
             print("** class doesn't exist **")
-
 
     def do_update(self, args):
         """ Updates an instance based on the class name
@@ -142,9 +144,6 @@ class HBNBCommand(cmd.Cmd):
 
         if len(args) == 3:
             print("** value missing **")
-
-
-    
 
     def do_help_quit(self, arg):
         """help to qiut """
