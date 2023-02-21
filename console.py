@@ -119,8 +119,16 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
 
     def do_all(self, arg):
-        if arg not in models.classes.keys():
+        if arg and arg not in ["BaseModel", "User", "State", "City",
+                       "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
+        elif not arg:
+            print(f"{str(models.storage.all())}")
+        else:
+            class_name = arg
+            for key in models.storage.all().keys():
+                if key.startswith(class_name):
+                    print(models.storage.all()[key])
 
     def do_update(self, args):
         """ Updates an instance based on the class name
