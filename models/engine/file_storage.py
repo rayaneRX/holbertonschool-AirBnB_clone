@@ -18,17 +18,20 @@ class FileStorage:
 
     def new(self, obj):
         FileStorage.__objects[f"{obj.__class__.__name__}.{obj.id}"] \
-            = obj.to_dict()
+            = obj
 
     def save(self):
+        dict = {}
+        for key in FileStorage.__objects.keys():
+            dict[key] = FileStorage.__objects[key].to_dict()
         with open(FileStorage.__file_path, "w") as file:
-            json.dump(FileStorage.__objects, file)
+            json.dump(dict, file)
 
     def reload(self):
         try:
             with open(FileStorage.__file_path, "r") as file:
                 dict = json.load(file)
-                for key, value in jsonData.items():
+                for key, value in dict.items():
                     self.__objects[key] = eval(value['__class__'])(**value)
         except Exception:
             pass
