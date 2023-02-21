@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
         args = arg.split()
-        if arg != "BaseModel" and issubclass(eval(arg), BaseModel) is False:
+        if args[0] != "BaseModel" and issubclass(eval(arg), BaseModel) is False:
             print("** class doesn't exist **")
 
         if len(args) == 1:
