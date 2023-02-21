@@ -2,9 +2,11 @@
 """program called console.py that contains
 the entry point of the command interpreter"""
 import cmd
+
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import models
+
 
 
 class HBNBCommand(cmd.Cmd):
@@ -17,6 +19,7 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing on empty line"""
         pass
 
+
     def do_quit(self, arg):
         """exit thr program"""
         print("bay bay -From Rayane")
@@ -26,6 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """exit thr program with EOF """
         print()
         return True
+
 
     def do_create(self, arg):
         """create a new instance of BaseModel"""
@@ -38,6 +42,7 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
             print(instance.id)
 
+
     def do_help_quit(self, arg):
         """help to qiut """
         print("Quit command to exit the program")
@@ -46,10 +51,12 @@ class HBNBCommand(cmd.Cmd):
         """help to EOF"""
         print("EOF command to exit the program")
 
+
     def do_help_create(self, arg):
         """help to create"""
         print("""'create' command creates an instant of BaseModel if you add
               class as argument after it""")
+
 
 
 if __name__ == '__main__':
