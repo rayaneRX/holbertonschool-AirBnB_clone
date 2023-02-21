@@ -8,7 +8,6 @@ from models import storage
 # model.save()
 
 
-objects = FileStorage._FileStorage__objects
 file = FileStorage._FileStorage__file_path
 
 
@@ -21,23 +20,42 @@ class TestFileStorage(unittest.TestCase):
         os.remove("file.json")
 
     def test_objects(self):
+        FileStorage._FileStorage__objects = {}
+        objects = FileStorage._FileStorage__objects
         model = BaseModel()
         model.save()
         self.assertEqual(type(objects), dict)
+        os.remove("file.json")
 
     def test_all(self):
+        FileStorage._FileStorage__objects = {}
+        objects = FileStorage._FileStorage__objects
         model = BaseModel()
         model.save()
         all_objs = storage.all()
         self.assertEquals(objects, all_objs)
+        os.remove("file.json")
 
     def test_new(self):
+        FileStorage._FileStorage__objects = {}
+        objects = FileStorage._FileStorage__objects
         model = BaseModel()
         FileStorage.new(FileStorage, model)
         self.assertNotEquals(objects[f"{model.__class__.__name__}.{model.id}"], None)
+        """ os.remove("file.json") """
 
     def test_reload(self):
+        FileStorage._FileStorage__objects = {}
+        objects = FileStorage._FileStorage__objects
         obj = objects.copy()
         model = BaseModel()
         FileStorage.reload(FileStorage)
         self.assertNotEqual(obj, objects)
+        """ os.remove("file.json") """
+
+    def test_save_storage(self):
+        self.assertEqual(os.path.isfile("file.json"), False)
+        model = BaseModel()
+        FileStorage.save(FileStorage)
+        self.assertEqual(os.path.isfile("file.json"), True)
+        os.remove("file.json")
