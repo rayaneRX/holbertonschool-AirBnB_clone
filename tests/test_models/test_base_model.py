@@ -37,8 +37,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(model.__str__(), f"[BaseModel] ({model.id}) {model.__dict__}")
         """ self.assertEqual(type(model.__str__()), str) """
 
-    def test_save(self):
-    obj = objects.copy()
-    model = BaseModel()
-    model.save()
-    self.assertNotEqual(obj, objects)
+    def test_save_with_reload(self):
+        obj = objects.copy()
+        model = BaseModel()
+        model.save()
+        self.assertNotEqual(obj, objects)
