@@ -35,7 +35,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """create a new instance of BaseModel"""
+        """'create' command creates an instant of BaseModel if you add
+class as argument after it"""
         if not arg:
             print("** class name missing **")
         elif arg not in ["BaseModel", "User", "State", "City",
@@ -48,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """show <class name> <id>: Prints the string representation
-        of an instance with the given ID of the given class name"""
+of an instance with the given ID of the given class name"""
 
         args = arg.split()
         if not arg:
@@ -75,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """destroy <class name> <id>: Deletes the instance
-        with the given ID of the given class name"""
+with the given ID of the given class name"""
 
         models.storage.reload()
         args = arg.split()
@@ -103,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """all [class name]: Prints the string representation
-        of all instances of the given class name"""
+of all instances of the given class name"""
 
         if arg and arg not in ["BaseModel", "User", "State", "City",
                                "Amenity", "Place", "Review"]:
@@ -117,10 +118,9 @@ class HBNBCommand(cmd.Cmd):
                     print(models.storage.all()[key])
 
     def do_update(self, args):
-        """ Updates an instance based on the class name
-        and id by adding or updating attribute
-        Usage: update <class name> <id> <attribute name> "<attribute value>"
-        """
+        """Updates an instance based on the class name
+and id by adding or updating attribute
+Usage: update <class name> <id> <attribute name> "<attribute value>" """
         args = args.split()
 
         if len(args) == 0:
@@ -137,25 +137,24 @@ class HBNBCommand(cmd.Cmd):
 
     def do_help_quit(self, arg):
         """help to qiut """
-        print("Quit command to exit the program")
 
     def do_help_EOF(self, arg):
         """help to EOF"""
-        print("EOF command to exit the program")
 
     def do_help_create(self, arg):
         """help to create"""
-        print("""'create' command creates an instant of BaseModel if you add
-              class as argument after it""")
+    
     def do_help_show(self, arg):
         """help to show"""
 
     def do_help_destroy(self, arg):
         """help to destroy"""
+
     def do_help_all(self, arg):
         """help all"""
-    def do_update(self, args):
-        """help to update"
+
+    def do_help_update(self, args):
+        """help to update"""
  
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
