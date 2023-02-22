@@ -26,7 +26,7 @@ Each task is linked and will help you to:
 - create a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
 - create all classes used for AirBnB (User, State, City, Place…) that inherit from BaseModel
 - create the first abstracted storage engine of the project: File storage.
-- create all unittests to validate all our classes and storage engine
+- create all unittests to validate all our classes and storage engine (All your tests should be executed by using this command: python3 -m unittest discover tests)
 
 ## <p align=center> `What’s a command interpreter?` </p>
 It’s exactly the same as the Shell, but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
