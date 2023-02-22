@@ -117,7 +117,6 @@ of all instances of the given class name"""
                 if key.startswith(class_name):
                     print(models.storage.all()[key])
 
-
     def do_update(self, arg):
         """Updates an instance based on the class name
 and id by adding or updating attribute
@@ -125,12 +124,11 @@ Usage: update <class name> <id> <attribute name> "<attribute value>" """
         models.storage.reload()
         args = arg.split()
 
-    def do_update(self, args):
+    def do_update(self, arg):
         """Updates an instance based on the class name
 and id by adding or updating attribute
 Usage: update <class name> <id> <attribute name> "<attribute value>" """
-        args = args.split()
-
+        args = arg.split()
 
         if not arg:
             print("** class name missing **")
@@ -166,7 +164,7 @@ Usage: update <class name> <id> <attribute name> "<attribute value>" """
 
     def do_help_create(self, arg):
         """help to create"""
-    
+
     def do_help_show(self, arg):
         """help to show"""
 
@@ -178,6 +176,7 @@ Usage: update <class name> <id> <attribute name> "<attribute value>" """
 
     def do_help_update(self, args):
         """help to update"""
- 
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
