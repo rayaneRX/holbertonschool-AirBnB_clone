@@ -44,4 +44,4 @@ class FileStorage:
                 for key, value in dict.items():
                     self.__objects[key] = eval(value['__class__'])(**value)
         except Exception:
-            pass # If the file doesn’t exist, no exception should be raised
+            pass  # If the file doesn’t exist, no exception should be raised
