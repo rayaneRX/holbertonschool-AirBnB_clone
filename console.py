@@ -154,10 +154,8 @@ Usage: update <class name> <id> <attribute name> "<attribute value>" """
                     setattr(models.storage.all()[key], args[2], args[3])
                     """ models.storage.all()[key].args[2] = args[3] """
 
-
-
     def do_help_quit(self, arg):
-        """help to qiut """
+        """help to quit """
 
     def do_help_EOF(self, arg):
         """help to EOF"""
