@@ -218,7 +218,17 @@ Update your command interpreter (console.py) to have these commands:
   - Only “simple” arguments can be updated: string, integer and float. You can assume nobody will try to update list of ids or datetime
 -------------------------------------------------------------------------------
 ### <p align=center>`8. First User`</p>
+Write a class User that inherits from BaseModel:
 
+- models/user.py
+- Public class attributes:
+  - email: string - empty string
+  - password: string - empty string
+  - first_name: string - empty string
+  - last_name: string - empty string
+  - Update FileStorage to manage correctly serialization and deserialization of User.
+
+Update your command interpreter (console.py) to allow show, create, destroy, update and all used with User.
 -------------------------------------------------------------------------------
 ### <p align=center>`9. More classes!`</p>
 Write all those classes that inherit from BaseModel:
