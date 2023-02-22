@@ -19,16 +19,20 @@ class BaseModel:
             self.updated_at = datetime.now()
             models.storage.new(self)
         if type(self.created_at) is str:
-            self.created_at = datetime.fromisoformat(self.created_at) # re-format to datetime type to be able to use to_dict()
+            self.created_at = datetime.fromisoformat(self.created_at)
+            # re-format to datetime type to be able to use to_dict()
         if type(self.updated_at) is str:
-            self.updated_at = datetime.fromisoformat(self.updated_at) # re-format to datetime type to be able to use to_dict()
+            self.updated_at = datetime.fromisoformat(self.updated_at)
+            # re-format to datetime type to be able to use to_dict()
 
     def __str__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        self.updated_at = datetime.now() # when saving the file, 'updated_at' is updated to current time
-        models.storage.save() # saves to json file
+        self.updated_at = datetime.now()
+        # when saving the file, 'updated_at' is updated to current time
+        models.storage.save()
+        # saves to json file
 
     def to_dict(self):
         new_dict = {}
@@ -40,4 +44,6 @@ class BaseModel:
                 new_dict[key] = self.created_at.isoformat()
             else:
                 new_dict[key] = value
-        return new_dict # returns a copy of dictionary representation of object, but with isoformat for dates
+        return new_dict
+    """returns a copy of dictionary representation of object
+    but with isoformat for dates"""
