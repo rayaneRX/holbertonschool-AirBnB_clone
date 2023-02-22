@@ -86,4 +86,45 @@ EOF  help  quit
 (hbnb) 
 $
 ```
-![image](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20230222%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20230222T102317Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8f56c5cd8c7adfb3aad6256e709cac1d3412d3a4ad0deb75ca58c61120543c34)
+
+## <p align=center>`Tasks`</p>
+### <p align=center>`0. README, AUTHORS`</p>
+- Write a README.md:
+  - description of the project
+  - description of the command interpreter:
+    - how to start it
+    - how to use it
+    - examples
+- You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. For format, reference Docker’s AUTHORS page
+- You should use branches and pull requests on GitHub - it will help you as team to organize your work
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
+### <p align=center>``</p>
+
+-------------------------------------------------------------------------------
