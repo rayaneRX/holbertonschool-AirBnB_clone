@@ -165,8 +165,22 @@ Update models/base_model.py: to link your BaseModel to FileStorage by using the 
 - __init__(self, *args, **kwargs):
   - if it’s a new instance (not from a dictionary representation), add a call to the method new(self) on storage
 -------------------------------------------------------------------------------
-### <p align=center>``</p>
+### <p align=center>`6. Console 0.0.1`</p>
+Write a program called console.py that contains the entry point of the command interpreter:
 
+- You must use the module cmd
+- Your class definition must be: class HBNBCommand(cmd.Cmd):
+- Your command interpreter should implement:
+  - quit and EOF to exit the program
+  - help (this action is provided by default by cmd but you should keep it updated and documented as you work through tasks)
+  - a custom prompt: (hbnb)
+  - an empty line + ENTER shouldn’t execute anything
+- Your code should not be executed when imported
+You should end your file with:
+```bash
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
+```
 -------------------------------------------------------------------------------
 ### <p align=center>``</p>
 
