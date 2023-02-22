@@ -46,3 +46,20 @@ Read or watch:
 - [unittest module](https://intranet.hbtn.io/rltoken/MKNUT1FRSdUiGIpwMmrtgw)
 - [args/kwargs](https://intranet.hbtn.io/rltoken/mY-8n8I-ohQIjkUOqcK6Rw)
 - [Python test cheatsheet](https://intranet.hbtn.io/rltoken/9PsyQoeiVNhWGcj_1PkZJg)
+
+
+## <p align=center> `Execution` </p>
+The shell should work like this in interactive mode:
+```bash
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
