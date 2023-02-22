@@ -47,7 +47,8 @@ class HBNBCommand(cmd.Cmd):
             print(instance.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based"""
+        """show <class name> <id>: Prints the string representation
+        of an instance with the given ID of the given class name"""
 
         args = arg.split()
         if not arg:
@@ -73,6 +74,8 @@ class HBNBCommand(cmd.Cmd):
                     print(instance)
 
     def do_destroy(self, arg):
+        """destroy <class name> <id>: Deletes the instance
+        with the given ID of the given class name"""
 
         models.storage.reload()
         args = arg.split()
@@ -99,6 +102,9 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
 
     def do_all(self, arg):
+        """all [class name]: Prints the string representation
+        of all instances of the given class name"""
+
         if arg and arg not in ["BaseModel", "User", "State", "City",
                                "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
@@ -141,7 +147,15 @@ class HBNBCommand(cmd.Cmd):
         """help to create"""
         print("""'create' command creates an instant of BaseModel if you add
               class as argument after it""")
+    def do_help_show(self, arg):
+        """help to show"""
 
-
+    def do_help_destroy(self, arg):
+        """help to destroy"""
+    def do_help_all(self, arg):
+        """help all"""
+    def do_update(self, args):
+        """help to update"
+ 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
