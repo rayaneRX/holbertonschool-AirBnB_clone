@@ -117,12 +117,20 @@ of all instances of the given class name"""
                 if key.startswith(class_name):
                     print(models.storage.all()[key])
 
+
     def do_update(self, arg):
         """Updates an instance based on the class name
 and id by adding or updating attribute
 Usage: update <class name> <id> <attribute name> "<attribute value>" """
         models.storage.reload()
         args = arg.split()
+
+    def do_update(self, args):
+        """Updates an instance based on the class name
+and id by adding or updating attribute
+Usage: update <class name> <id> <attribute name> "<attribute value>" """
+        args = args.split()
+
 
         if not arg:
             print("** class name missing **")
