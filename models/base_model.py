@@ -45,5 +45,5 @@ class BaseModel:
             else:
                 new_dict[key] = value
         return new_dict
-    """returns a copy of dictionary representation of object
+    """returns a copy of the dictionary representation of an object
     but with isoformat for dates"""
