@@ -217,12 +217,46 @@ Update your command interpreter (console.py) to have these commands:
   - id, created_at and updated_at cant’ be updated. You can assume they won’t be passed in the update command
   - Only “simple” arguments can be updated: string, integer and float. You can assume nobody will try to update list of ids or datetime
 -------------------------------------------------------------------------------
-### <p align=center>``</p>
+### <p align=center>`8. First User`</p>
 
 -------------------------------------------------------------------------------
-### <p align=center>``</p>
+### <p align=center>`9. More classes!`</p>
+Write all those classes that inherit from BaseModel:
 
+- State (models/state.py):
+  -   - Public class attributes:
+  - name: string - empty string
+- City (models/city.py):
+  -   - Public class attributes:
+  - state_id: string - empty string: it will be the State.id
+  - name: string - empty string
+- Amenity (models/amenity.py):
+  -   - Public class attributes:
+  - name: string - empty string
+- Place (models/place.py):
+  -   - Public class attributes:
+  - city_id: string - empty string: it will be the City.id
+  - user_id: string - empty string: it will be the User.id
+  - name: string - empty string
+  - description: string - empty string
+  - number_rooms: integer - 0
+  - number_bathrooms: integer - 0
+  - max_guest: integer - 0
+  - price_by_night: integer - 0
+  - latitude: float - 0.0
+  - longitude: float - 0.0
+  - amenity_ids: list of string - empty list: it will be the list of Amenity.id later
+- Review (models/review.py):
+  -   - Public class attributes:
+  - place_id: string - empty string: it will be the Place.id
+  - user_id: string - empty string: it will be the User.id
+  - text: string - empty string
 -------------------------------------------------------------------------------
-### <p align=center>``</p>
+### <p align=center>`10. Console 1.0`</p>
+Update FileStorage to manage correctly serialization and deserialization of all our new classes: Place, State, City, Amenity and Review
+
+Update your command interpreter (console.py) to allow those actions: show, create, destroy, update and all with all classes created previously.
+
+Enjoy your first console!
 
 -------------------------------------------------------------------------------
