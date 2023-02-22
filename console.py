@@ -35,7 +35,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """create a new instance of BaseModel"""
+        """'create' command creates an instant of BaseModel if you add
+class as argument after it"""
         if not arg:
             print("** class name missing **")
         elif arg not in ["BaseModel", "User", "State", "City",
@@ -47,7 +48,8 @@ class HBNBCommand(cmd.Cmd):
             print(instance.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based"""
+        """show <class name> <id>: Prints the string representation
+of an instance with the given ID of the given class name"""
 
         args = arg.split()
         if not arg:
@@ -73,6 +75,8 @@ class HBNBCommand(cmd.Cmd):
                     print(instance)
 
     def do_destroy(self, arg):
+        """destroy <class name> <id>: Deletes the instance
+with the given ID of the given class name"""
 
         models.storage.reload()
         args = arg.split()
@@ -99,6 +103,9 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
 
     def do_all(self, arg):
+        """all [class name]: Prints the string representation
+of all instances of the given class name"""
+
         if arg and arg not in ["BaseModel", "User", "State", "City",
                                "Amenity", "Place", "Review"]:
             print("** class doesn't exist **")
@@ -110,38 +117,59 @@ class HBNBCommand(cmd.Cmd):
                 if key.startswith(class_name):
                     print(models.storage.all()[key])
 
-    def do_update(self, args):
-        """ Updates an instance based on the class name
-        and id by adding or updating attribute
-        Usage: update <class name> <id> <attribute name> "<attribute value>"
-        """
-        args = args.split()
+    def do_update(self, arg):
+        """Updates an instance based on the class name
+and id by adding or updating attribute
+Usage: update <class name> <id> <attribute name> "<attribute value>" """
+        models.storage.reload()
+        args = arg.split()
 
-        if len(args) == 0:
+        if not arg:
             print("** class name missing **")
+        elif args[0] not in ["BaseModel", "User", "State", "City",
+                             "Amenity", "Place", "Review"]:
+            print("** class doesn't exist **")
 
-        if len(args) == 1:
-            print("** instance id missing **")
+        else:
+            if len(args) == 1:
+                print("** instance id missing **")
+            elif len(args) >= 2:
+                class_name = args[0]
+                instance_id = args[1]
+                key = class_name + "." + instance_id
 
-        if len(args) == 2:
-            print("** attribute name missing **")
+                if key not in models.storage.all().keys():
+                    print("** no instance found **")
+                elif len(args) == 2:
+                    print("** attribute name missing **")
+                elif len(args) == 3:
+                    print("** value missing **")
+                else:
+                    setattr(models.storage.all()[key], args[2], args[3])
+                    """ models.storage.all()[key].args[2] = args[3] """
 
-        if len(args) == 3:
-            print("** value missing **")
+
 
     def do_help_quit(self, arg):
         """help to qiut """
-        print("Quit command to exit the program")
 
     def do_help_EOF(self, arg):
         """help to EOF"""
-        print("EOF command to exit the program")
 
     def do_help_create(self, arg):
         """help to create"""
-        print("""'create' command creates an instant of BaseModel if you add
-              class as argument after it""")
+    
+    def do_help_show(self, arg):
+        """help to show"""
 
+    def do_help_destroy(self, arg):
+        """help to destroy"""
 
+    def do_help_all(self, arg):
+        """help all"""
+
+    def do_help_update(self, args):
+        """help to update"""
+ 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
