@@ -117,23 +117,46 @@ of all instances of the given class name"""
                 if key.startswith(class_name):
                     print(models.storage.all()[key])
 
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name
+and id by adding or updating attribute
+Usage: update <class name> <id> <attribute name> "<attribute value>" """
+        models.storage.reload()
+        args = arg.split()
+
     def do_update(self, args):
         """Updates an instance based on the class name
 and id by adding or updating attribute
 Usage: update <class name> <id> <attribute name> "<attribute value>" """
         args = args.split()
 
-        if len(args) == 0:
+
+        if not arg:
             print("** class name missing **")
+        elif args[0] not in ["BaseModel", "User", "State", "City",
+                             "Amenity", "Place", "Review"]:
+            print("** class doesn't exist **")
 
-        if len(args) == 1:
-            print("** instance id missing **")
+        else:
+            if len(args) == 1:
+                print("** instance id missing **")
+            elif len(args) >= 2:
+                class_name = args[0]
+                instance_id = args[1]
+                key = class_name + "." + instance_id
 
-        if len(args) == 2:
-            print("** attribute name missing **")
+                if key not in models.storage.all().keys():
+                    print("** no instance found **")
+                elif len(args) == 2:
+                    print("** attribute name missing **")
+                elif len(args) == 3:
+                    print("** value missing **")
+                else:
+                    setattr(models.storage.all()[key], args[2], args[3])
+                    """ models.storage.all()[key].args[2] = args[3] """
 
-        if len(args) == 3:
-            print("** value missing **")
+
 
     def do_help_quit(self, arg):
         """help to qiut """
