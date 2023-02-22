@@ -176,6 +176,7 @@ Write a program called console.py that contains the entry point of the command i
   - a custom prompt: (hbnb)
   - an empty line + ENTER shouldn’t execute anything
 - Your code should not be executed when imported
+
 You should end your file with:
 ```bash
 if __name__ == '__main__':
