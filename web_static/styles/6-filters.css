@@ -57,6 +57,7 @@ div.locations:hover .popover {
   display: block;
 }
 div.amenities:hover .popover {
+  padding: 30px;
   display: block;
 }
 .popover ul {
