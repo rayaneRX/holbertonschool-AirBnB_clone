@@ -43,10 +43,16 @@
   padding: 0;
   margin: 0;
   width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
 }
 .locations h2 {
   font-size: 16px;
 }
+.amenities {
+  margin-right: auto;
+}
+
 div.locations:hover .popover {
   display: block;
 }
