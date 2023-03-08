@@ -1,1 +1,1 @@
-Web Static
+AirBnB clone - Web static
